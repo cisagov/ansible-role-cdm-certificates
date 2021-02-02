@@ -12,7 +12,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ).get_hosts("all")
 
 
-@pytest.mark.parametrize("x", [True])
-def test_packages(host, x):
-    """Run a dummy test, just to show what one would look like."""
-    assert x
+@pytest.mark.parametrize("pkg_name", ["ca-certificates"])
+def test_packages(host, pkg_name):
+    """Verify that all expected packages were installed."""
+    assert host.package(pkg_name).is_installed

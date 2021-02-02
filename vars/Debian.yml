@@ -1,0 +1,10 @@
+---
+# The packages necessary to install ca-certificates
+package_names:
+  - ca-certificates
+
+# The directory where trusted certificates are located
+certificate_dir: /usr/local/share/ca-certificates
+
+# The full path to the executable used to update the CA trust
+update_ca_trust_executable: /usr/sbin/update-ca-certificates
