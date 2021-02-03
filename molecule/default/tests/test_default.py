@@ -21,13 +21,18 @@ def test_packages(host, pkg_name):
 @pytest.mark.parametrize(
     "file_name",
     [
-        "/usr/local/share/ca-certificates/cert_US_CISA_0_Root_CA.crt",
-        "/usr/local/share/ca-certificates/cert_US_CISA_1_Issuing_CA_reissued.crt",
+        "cert_US_CISA_0_Root_CA.crt",
+        "cert_US_CISA_1_Issuing_CA_reissued.crt",
     ],
 )
 def test_cert_files(host, file_name):
     """Verify that all expected certificate files were installed."""
-    f = host.file(file_name)
+    distribution = host.system_info.distribution
+    if distribution == "amzn" or distribution == "fedora":
+        path = "/etc/pki/ca-trust/source/anchors/"
+    elif distribution == "debian" or distribution == "kali" or distribution == "ubuntu":
+        path = "/usr/local/share/ca-certificates/"
+    f = host.file(path + file_name)
     assert f.exists
     assert f.is_file
     assert f.user == "root"
