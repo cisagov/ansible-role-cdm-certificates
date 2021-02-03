@@ -16,7 +16,7 @@
 
 - name: Copy VENOM certificates
   ansible.builtin.copy:
-    dest: /usr/local/share/ca-certificates/
+    dest: "{{ certificate_dir }}"
     mode: 0400
     src: "{{ item }}"
   loop:
