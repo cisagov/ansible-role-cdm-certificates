@@ -6,5 +6,6 @@ package_names:
 # The directory where trusted certificates are located
 certificate_dir: /usr/local/share/ca-certificates
 
-# The full path to the executable used to update the CA trust
-update_ca_trust_executable: /usr/sbin/update-ca-certificates
+# The command used to update the CA trust, including the full path to
+# the executable
+update_ca_trust_command: /usr/sbin/update-ca-certificates
