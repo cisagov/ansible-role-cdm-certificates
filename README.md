@@ -5,8 +5,9 @@
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-venom-certificates.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-venom-certificates/context:python)
 
 This Ansible role installs some CA certificates that are required for
-the VENOM agents to talk back to the VENOM mothership.  It also
-instructs the system to trust these certificates.
+the VENOM (Virtual Enterprise Network Operations Manager) agents to
+talk back to the VENOM mothership.  It also instructs the system to
+trust these certificates.
 
 ## Requirements ##
 
