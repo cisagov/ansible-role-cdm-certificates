@@ -28,9 +28,9 @@ def test_packages(host, pkg_name):
 def test_cert_files(host, file_name):
     """Verify that all expected certificate files were installed."""
     distribution = host.system_info.distribution
-    if distribution == "amzn" or distribution == "fedora":
+    if distribution in ["amzn", "fedora"]:
         path = "/etc/pki/ca-trust/source/anchors/"
-    elif distribution == "debian" or distribution == "kali" or distribution == "ubuntu":
+    elif distribution in ["debian", "kali", "ubuntu"]:
         path = "/usr/local/share/ca-certificates/"
     f = host.file(path + file_name)
     assert f.exists
