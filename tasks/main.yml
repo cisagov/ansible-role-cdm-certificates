@@ -1,2 +1,26 @@
 ---
-# tasks file for skeleton
+- name: Load var file specific to the OS type
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+      paths:
+        - "{{ role_path }}/vars"
+
+- name: Install ca-certificates package
+  ansible.builtin.package:
+    name: "{{ package_names }}"
+
+- name: Copy VENOM certificates
+  ansible.builtin.copy:
+    dest: "{{ certificate_dir }}"
+    mode: 0400
+    src: "{{ item }}"
+  loop:
+    - cert_US_CISA_0_Root_CA.crt
+    - cert_US_CISA_1_Issuing_CA_reissued.crt
+  notify:
+    - Update certificate trust
