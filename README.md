@@ -1,12 +1,12 @@
-# ansible-role-venom-certificates #
+# ansible-role-cdm-certificates #
 
-[![GitHub Build Status](https://github.com/cisagov/ansible-role-venom-certificates/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-venom-certificates/actions)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-venom-certificates.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-venom-certificates/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-venom-certificates.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-venom-certificates/context:python)
+[![GitHub Build Status](https://github.com/cisagov/ansible-role-cdm-certificates/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-cdm-certificates/actions)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-cdm-certificates.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-cdm-certificates/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-cdm-certificates.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-cdm-certificates/context:python)
 
 This Ansible role installs some CA certificates that are required for
-the VENOM (Virtual Enterprise Network Operations Manager) agents to
-talk back to the VENOM mothership.  It also instructs the system to
+the CISA CDM (Continuous Diagnostics and Mitigation) agents to talk
+back to the CISA CDM mothership.  It also instructs the system to
 trust these certificates.
 
 ## Requirements ##
@@ -30,7 +30,7 @@ Here's how to use it in a playbook:
   become: yes
   become_method: sudo
   roles:
-    - venom_certificates
+    - cdm_certificates
 ```
 
 ## Contributing ##

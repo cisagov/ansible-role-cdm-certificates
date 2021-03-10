@@ -14,7 +14,7 @@
   ansible.builtin.package:
     name: "{{ package_names }}"
 
-- name: Copy VENOM certificates
+- name: Copy CISA CDM certificates
   ansible.builtin.copy:
     dest: "{{ certificate_dir }}"
     mode: 0400
