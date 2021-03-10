@@ -1,12 +1,12 @@
 ---
 galaxy_info:
   author: Shane Frasier
-  description: Install and trust CISA VENOM certificates
+  description: Install and trust CISA CDM certificates
   company: CISA Cyber Assessments
   galaxy_tags:
     - certificates
     - cisa
-    - venom
+    - cdm
   license: CC0
   # With the release of version 2.10, Ansible finally correctly
   # identifies Kali Linux as being the Kali distribution of the Debian
@@ -34,6 +34,6 @@ galaxy_info:
       versions:
         - bionic
         - focal
-  role_name: venom_certificates
+  role_name: cdm_certificates
 
 dependencies: []
