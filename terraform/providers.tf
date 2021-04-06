@@ -28,27 +28,49 @@ provider "aws" {
   }
 }
 
-# The provider used to create policies and roles that can read
-# parameters from AWS SSM Parameter Store in staging.
+# The provider used to create roles that can read objects from the
+# production third-party S3 bucket
 provider "aws" {
-  alias  = "images_staging_ssm"
+  alias  = "images_production_thirdparty"
   region = var.aws_region
   assume_role {
-    role_arn     = data.terraform_remote_state.images_staging_ssm.outputs.provisionparameterstorereadroles_role.arn
+    role_arn     = data.terraform_remote_state.images_production.outputs.provisionthirdpartybucketreadroles_role.arn
+    session_name = local.caller_user_name
+  }
+}
+
+# The provider used to create roles that can read objects from the
+# staging third-party S3 bucket
+provider "aws" {
+  alias  = "images_staging_thirdparty"
+  region = var.aws_region
+  assume_role {
+    role_arn     = data.terraform_remote_state.images_staging.outputs.provisionthirdpartybucketreadroles_role.arn
     session_name = local.caller_user_name
   }
 }
 
 # The provider used to create policies and roles that can read
+# parameters from AWS SSM Parameter Store in staging.
+# provider "aws" {
+#   alias  = "images_staging_ssm"
+#   region = var.aws_region
+#   assume_role {
+#     role_arn     = data.terraform_remote_state.images_staging_ssm.outputs.provisionparameterstorereadroles_role.arn
+#     session_name = local.caller_user_name
+#   }
+# }
+
+# The provider used to create policies and roles that can read
 # parameters from AWS SSM Parameter Store in production.
-provider "aws" {
-  alias  = "images_production_ssm"
-  region = var.aws_region
-  assume_role {
-    role_arn     = data.terraform_remote_state.images_production_ssm.outputs.provisionparameterstorereadroles_role.arn
-    session_name = local.caller_user_name
-  }
-}
+# provider "aws" {
+#   alias  = "images_production_ssm"
+#   region = var.aws_region
+#   assume_role {
+#     role_arn     = data.terraform_remote_state.images_production_ssm.outputs.provisionparameterstorereadroles_role.arn
+#     session_name = local.caller_user_name
+#   }
+# }
 
 # The provider used to create the test user
 provider "aws" {
