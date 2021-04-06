@@ -14,13 +14,34 @@
   ansible.builtin.package:
     name: "{{ package_names }}"
 
-- name: Copy CISA CDM certificates
-  ansible.builtin.copy:
-    dest: "{{ certificate_dir }}"
-    mode: 0400
-    src: "{{ item }}"
-  loop:
-    - cert_US_CISA_0_Root_CA.crt
-    - cert_US_CISA_1_Issuing_CA_reissued.crt
-  notify:
-    - Update certificate trust
+- name: Grab and copy the CDM certificates
+  block:
+    - name: Grab the CISA CDM certificates from S3
+      amazon.aws.aws_s3:
+        bucket: "{{ third_party_bucket_name }}"
+        object: "{{ item }}"
+        dest: /tmp/{{ item }}
+        mode: get
+      become: no
+      delegate_to: localhost
+      loop: "{{ certificate_object_names }}"
+
+    - name: Copy the CISA CDM certificates
+      ansible.builtin.copy:
+        dest: "{{ certificate_dir }}"
+        mode: 0400
+        src: /tmp/{{ item }}
+      loop: "{{ certificate_object_names }}"
+      notify:
+        - Update certificate trust
+
+    - name: Delete local copy of CISA CDM certificates
+      ansible.builtin.file:
+        path: /tmp/{{ item }}
+        state: absent
+      become: no
+      delegate_to: localhost
+      loop: "{{ certificate_object_names }}"
+  tags:
+    # I don't see a good way to make these tasks idempotent
+    - molecule-idempotence-notest
