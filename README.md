@@ -21,7 +21,7 @@ local machine.
 Before the build user can be created, the following profile must exist in
 your AWS credentials file:
 
-* `cool-terraform-backend`
+- `cool-terraform-backend`
 
 The easiest way to set up that profile is to use our
 [`aws-profile-sync`](https://github.com/cisagov/aws-profile-sync)
@@ -61,10 +61,10 @@ None.
 
 ## Role Variables ##
 
-* `certificate_object_names` - a list of S3 objects corresponding to
+- `certificate_object_names` - a list of S3 objects corresponding to
   the CDM certificates.  Defaults to ["cert_US_CISA_0_Root_CA.crt",
   "cert_US_CISA_1_Issuing_CA_reissued.crt"].
-* `third_party_bucket_name` - the name of the AWS S3 bucket where
+- `third_party_bucket_name` - the name of the AWS S3 bucket where
   third-party software is located.  Defaults to
   "cisa-cool-third-party-production".
 
