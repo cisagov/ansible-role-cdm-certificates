@@ -66,7 +66,7 @@ None.
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| certificate_object_names | A list of S3 objects corresponding to the CDM certificates. | `["cert_US_CISA_0_Root_CA.crt","cert_US_CISA_1_Issuing_CA_reissued.crt"]` | No |
+| certificate_object_names | A list of AWS S3 objects corresponding to the CDM certificates. | `["cert_US_CISA_0_Root_CA.crt","cert_US_CISA_1_Issuing_CA_reissued.crt"]` | No |
 | third_party_bucket_name | The name of the AWS S3 bucket where third-party software is located. | `cisa-cool-third-party-production` | Yes |
 
 ## Dependencies ##
