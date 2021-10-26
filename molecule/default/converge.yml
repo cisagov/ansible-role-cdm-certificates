@@ -1,5 +1,7 @@
 ---
 - name: Converge
   hosts: all
-  roles:
-    - role: ansible-role-cdm-certificates
+  tasks:
+    - name: Include ansible-role-cdm-certificates
+      ansible.builtin.include_role:
+        name: ansible-role-cdm-certificates
