@@ -1,8 +1,7 @@
 # ansible-role-cdm-certificates #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-cdm-certificates/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-cdm-certificates/actions)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-cdm-certificates.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-cdm-certificates/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-cdm-certificates.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-cdm-certificates/context:python)
+[![CodeQL](https://github.com/cisagov/ansible-role-cdm-certificates/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-cdm-certificates/actions/workflows/codeql-analysis.yml)
 
 This Ansible role installs some CA certificates that are required for
 the CISA CDM (Continuous Diagnostics and Mitigation) agents to talk
@@ -81,8 +80,10 @@ Here's how to use it in a playbook:
 - hosts: all
   become: yes
   become_method: sudo
-  roles:
-    - cdm_certificates
+  tasks:
+    - name: Install and trust CDM certificates
+      ansible.builtin.include_role:
+        name: cdm_certificates
 ```
 
 ## Contributing ##
