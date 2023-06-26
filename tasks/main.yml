@@ -21,20 +21,20 @@
   block:
     - name: Grab the CISA CDM certificates from S3
       amazon.aws.aws_s3:
-        bucket: "{{ third_party_bucket_name }}"
+        bucket: "{{ cdm_certificates_third_party_bucket_name }}"
         object: "{{ item }}"
         dest: /tmp/{{ item }}
         mode: get
       become: no
       delegate_to: localhost
-      loop: "{{ certificate_object_names }}"
+      loop: "{{ cdm_certificates_certificate_object_names }}"
 
     - name: Copy the CISA CDM certificates
       ansible.builtin.copy:
         dest: "{{ certificate_dir }}"
         mode: 0400
         src: /tmp/{{ item }}
-      loop: "{{ certificate_object_names }}"
+      loop: "{{ cdm_certificates_certificate_object_names }}"
       notify:
         - Update certificate trust
 
@@ -44,4 +44,4 @@
         state: absent
       become: no
       delegate_to: localhost
-      loop: "{{ certificate_object_names }}"
+      loop: "{{ cdm_certificates_certificate_object_names }}"
