@@ -15,6 +15,9 @@
     name: "{{ package_names }}"
 
 - name: Grab and copy the CDM certificates
+  tags:
+    # I don't see a good way to make these tasks idempotent
+    - molecule-idempotence-notest
   block:
     - name: Grab the CISA CDM certificates from S3
       amazon.aws.aws_s3:
@@ -42,6 +45,3 @@
       become: no
       delegate_to: localhost
       loop: "{{ certificate_object_names }}"
-  tags:
-    # I don't see a good way to make these tasks idempotent
-    - molecule-idempotence-notest
