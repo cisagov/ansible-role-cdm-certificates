@@ -2,3 +2,6 @@
 - name: Update certificate trust
   ansible.builtin.command:
     cmd: "{{ update_ca_trust_command }}"
+  register: update_trust
+  changed_when: update_trust.rc == 0
+  failed_when: update_trust.rc != 0
