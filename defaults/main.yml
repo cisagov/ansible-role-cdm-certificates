@@ -1,8 +1,8 @@
 ---
 # The names of the S3 objects that are the CISA CDM certificates
-certificate_object_names:
+cdm_certificates_certificate_object_names:
   - cert_US_CISA_0_Root_CA.crt
   - cert_US_CISA_1_Issuing_CA_reissued.crt
 
 # The name of the AWS S3 bucket where third-party software is located
-third_party_bucket_name: cisa-cool-third-party-production
+cdm_certificates_third_party_bucket_name: cisa-cool-third-party-production
