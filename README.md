@@ -84,8 +84,8 @@ where `requirements.yml` looks like:
 
 ```yaml
 ---
-- name: skeleton
-  src: https://github.com/cisagov/skeleton-ansible-role-with-test-user
+- name: cdm_certificates
+  src: https://github.com/cisagov/ansible-role-cdm-certificates
 ```
 
 and may contain other roles as well.
