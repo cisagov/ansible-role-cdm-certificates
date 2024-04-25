@@ -32,6 +32,9 @@ def test_cert_files(host, file_name):
         path = "/etc/pki/ca-trust/source/anchors/"
     elif distribution in ["debian", "kali", "ubuntu"]:
         path = "/usr/local/share/ca-certificates/"
+    else:
+        assert False, f"Unsupported distribution {distribution}"
+
     f = host.file(path + file_name)
     assert f.exists
     assert f.is_file
