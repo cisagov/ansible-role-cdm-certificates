@@ -20,7 +20,7 @@
     - molecule-idempotence-notest
   block:
     - name: Grab the CISA CDM certificates from S3
-      amazon.aws.aws_s3:
+      amazon.aws.s3_object:
         bucket: "{{ cdm_certificates_third_party_bucket_name }}"
         object: "{{ item }}"
         dest: /tmp/{{ item }}
