@@ -8,5 +8,6 @@ module "user" {
     aws.images-ssm              = aws.images_ssm
   }
 
-  entity = "ansible-role-cdm-certificates"
+  entity         = "ansible-role-cdm-certificates"
+  ssm_parameters = ["/third_party_bucket_name"]
 }
