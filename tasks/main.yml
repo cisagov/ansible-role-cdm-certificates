@@ -32,7 +32,7 @@
     - name: Copy the CISA CDM certificates
       ansible.builtin.copy:
         dest: "{{ certificate_dir }}"
-        mode: 0400
+        mode: u=r,g=,o=
         src: /tmp/{{ item }}
       loop: "{{ cdm_certificates_certificate_object_names }}"
       notify:
