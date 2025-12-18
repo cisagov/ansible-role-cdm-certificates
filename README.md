@@ -1,6 +1,7 @@
 # ansible-role-cdm-certificates #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-cdm-certificates/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-cdm-certificates/actions)
+[![License](https://img.shields.io/github/license/cisagov/ansible-role-cdm-certificates)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/ansible-role-cdm-certificates/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-cdm-certificates/actions/workflows/codeql-analysis.yml)
 
 This Ansible role installs some CA certificates that are required for
