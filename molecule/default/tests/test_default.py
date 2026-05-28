@@ -33,7 +33,7 @@ def test_cert_files(host, file_name):
     elif distribution in ["debian", "kali", "ubuntu"]:
         path = "/usr/local/share/ca-certificates/"
     else:
-        assert False, f"Unsupported distribution {distribution}"
+        raise ValueError(f"Unsupported distribution {distribution}")
 
     f = host.file(path + file_name)
     assert f.exists
